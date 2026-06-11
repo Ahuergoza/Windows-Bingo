@@ -15,12 +15,12 @@
 
         header {
             text-align: center;
-            padding: 40px 20px;
+            padding: 20px;
         }
 
         header img {
             width: 100%;
-            height: 420px;
+            max-height: 420px;
             object-fit: cover;
             border-radius: 10px;
             margin-bottom: 20px;
@@ -88,6 +88,7 @@
             color: #777;
         }
 
+        /* MODAL */
         .modal {
             display: none;
             position: fixed;
@@ -127,10 +128,51 @@
             background: #ccc;
         }
 
-        .counter-box {
-            margin-top: 10px;
-            font-size: 1rem;
-            color: #444;
+        /* 📱 RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.9rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .download-btn {
+                width: 100%;
+                font-size: 1.1rem;
+                padding: 14px;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .features li {
+                font-size: 0.95rem;
+            }
+
+            header img {
+                max-height: 260px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            .section {
+                margin: 25px 0;
+            }
+
+            .modal-content {
+                margin-top: 40%;
+            }
         }
     </style>
 </head>
@@ -148,8 +190,6 @@
     <div class="section" style="text-align:center;">
         <a class="download-btn" href="#" onclick="openModal()">📥 Descargar Bingoo Social</a>
         <p>Versión para Windows – Portable sin Instalación</p>
-
-       
     </div>
 
     <div class="section features">
@@ -214,26 +254,10 @@ function closeModal() {
 }
 
 function continueDownload() {
-    fetch("https://api.countapi.xyz/hit/bingoo-social/descargas")
-        .then(res => res.json())
-        .then(data => {
-            document.getElementById("downloadCount").innerText = data.value;
-        });
-
     window.location.href = "https://raw.githubusercontent.com/Ahuergoza/Windows-Bingo/main/BINGOO.exe";
-
     closeModal();
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    fetch("https://api.countapi.xyz/get/bingoo-social/descargas")
-        .then(res => res.json())
-        .then(data => {
-            document.getElementById("downloadCount").innerText = data.value || 0;
-        });
-});
 </script>
 
 </body>
 </html>
-
